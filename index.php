@@ -52,7 +52,9 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 echo '<a href="edit.php?profile_id=' . $row['profile_id'] . '">Edit</a> / ';
                 echo '<a href="delete.php?profile_id=' . $row['profile_id'] . '">Delete</a>';
                 echo '</td></tr>';
-                       echo '</table>';
+            }
+
+            echo '</table>';
         } else {
             echo '<p>No profiles found</p>';
         }
