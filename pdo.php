@@ -1,5 +1,5 @@
 <?php
-$host = 'mysql.railway.internal';
+$host = 'containers-us-west-123.railway.app'; // ← use your actual host
 $port = '3306';
 $dbname = 'railway';
 $user = 'root';
