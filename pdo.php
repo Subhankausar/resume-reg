@@ -5,8 +5,10 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Get database credentials from environment variables
-$host = getenv('MYSQLHOST');        // e.g., mysql.railway.internal
-$port = getenv('MYSQLPORT');        // e.g., 3306
+
+$host = getenv('MYSQLHOST');
+$port = getenv('MYSQLPORT');
+      // e.g., 3306
 $dbname = getenv('MYSQLDATABASE');  // e.g., railway
 $user = getenv('MYSQLUSER');        // e.g., root
 $pass = getenv('MYSQLPASSWORD');    // your Railway password
