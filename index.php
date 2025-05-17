@@ -4,6 +4,11 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once "pdo.php";
+
+if (!$pdo) {
+    die("Database connection failed. Please try again later.");
+}
+
 $stmt = $pdo->query("SELECT profile_id, first_name, last_name, headline FROM users JOIN Profile ON users.user_id = Profile.user_id");
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -47,9 +52,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 echo '<a href="edit.php?profile_id=' . $row['profile_id'] . '">Edit</a> / ';
                 echo '<a href="delete.php?profile_id=' . $row['profile_id'] . '">Delete</a>';
                 echo '</td></tr>';
-            }
-
-            echo '</table>';
+                       echo '</table>';
         } else {
             echo '<p>No profiles found</p>';
         }
