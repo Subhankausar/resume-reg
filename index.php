@@ -1,4 +1,12 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
+
+
+
+<?php
 session_start();
 require_once "pdo.php";
 $stmt = $pdo->query("SELECT profile_id, first_name, last_name, headline FROM users JOIN Profile ON users.user_id = Profile.user_id");
