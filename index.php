@@ -1,13 +1,8 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-?>
 
-
-
-
-<?php
-session_start();
 require_once "pdo.php";
 $stmt = $pdo->query("SELECT profile_id, first_name, last_name, headline FROM users JOIN Profile ON users.user_id = Profile.user_id");
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -17,7 +12,6 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 <head>
     <title>Subhan 020f5665</title>
-
     <?php require_once "bootstrap.php"; ?>
 </head>
 <body>
