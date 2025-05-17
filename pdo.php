@@ -16,8 +16,9 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "✅ Connected to database successfully.";
 } catch (PDOException $e) {
-    echo "❌ Connection failed: " . $e->getMessage(); // Show error on screen
+    echo "❌ Connection failed: " . $e->getMessage();
     error_log("Connection failed: " . $e->getMessage());
     $pdo = null;
 }
+
 ?>
