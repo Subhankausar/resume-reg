@@ -3,11 +3,12 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$host = 'maglev.proxy.rlwy.net';
-$port = '41197';
-$dbname = 'railway';
-$user = 'root';
-$pass = 'ZcPphICdqmFwpYrASNWpxNZDqxRGiVXZ';
+// Get values from environment variables
+$host = getenv('MYSQLHOST');
+$port = getenv('MYSQLPORT');
+$dbname = getenv('MYSQLDATABASE');
+$user = getenv('MYSQLUSER');
+$pass = getenv('MYSQLPASSWORD');
 
 $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
 
@@ -20,5 +21,4 @@ try {
     error_log("Connection failed: " . $e->getMessage());
     $pdo = null;
 }
-
 ?>
