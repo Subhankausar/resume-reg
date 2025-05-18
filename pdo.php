@@ -1,11 +1,10 @@
 <?php
-$host = getenv("DB_HOST");
-$db = getenv("DB_NAME");
-$user = getenv("DB_USER");
-$pass = getenv("DB_PASSWORD");
-$port = getenv("DB_PORT");
+$host = 'localhost';
+$db = 'misc';
+$user = 'fred';
+$pass = 'zap';
+$port = 3306;
 
-// Build the DSN including the port
 $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=utf8";
 
 try {
@@ -19,7 +18,6 @@ try {
         $pdo->exec($sql);
     }
 } catch (PDOException $e) {
-    // Show error message and stop script
     die("Database connection failed: " . $e->getMessage());
 }
 ?>
