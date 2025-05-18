@@ -1,22 +1,16 @@
 <?php
-$host = 'turntable.proxy.rlwy.net';
-$db   = 'railway';
-$user = 'root';
-$pass = 'lOCVPoXcYfwWazjXcrVhgPIuutqiJuQo';
-$charset = 'utf8mb4';
+$host = getenv("DB_HOST");
+$db = getenv("DB_NAME");
+$user = getenv("DB_USER");
+$pass = getenv("DB_PASS");
 
-$dsn = "mysql:host=$host;port=31843;dbname=$db;charset=$charset";
+$pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-
-try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (PDOException $e) {
-    error_log("Database connection error: " . $e->getMessage());
-    $pdo = false;
+// Check if 'users' table exists
+$stmt = $pdo->query("SHOW TABLES LIKE 'users'");
+if ($stmt->rowCount() == 0) {
+    $sql = file_get_contents(__DIR__ . '/init.sql');
+    $pdo->exec($sql);
 }
 ?>
