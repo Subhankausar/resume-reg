@@ -1,11 +1,11 @@
 <?php
-$host = 'your-railway-host'; // e.g., containers-us-west-123.railway.app
-$db   = 'your-railway-db-name';
-$user = 'your-railway-username';
-$pass = 'your-railway-password';
+$host = 'turntable.proxy.rlwy.net';
+$db   = 'railway';
+$user = 'root';
+$pass = 'lOCVPoXcYfwWazjXcrVhgPIuutqiJuQo';
 $charset = 'utf8mb4';
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$dsn = "mysql:host=$host;port=31843;dbname=$db;charset=$charset";
 
 $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
