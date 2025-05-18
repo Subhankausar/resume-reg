@@ -16,4 +16,4 @@ COPY . /app
 EXPOSE 10000
 
 # Start the PHP development server
-CMD ["php", "-S", "0.0.0.0:10000", "-t", "."]
+CMD ["sh", "-c", "php -S 0.0.0.0:${PORT:-10000} -t ."]
