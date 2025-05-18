@@ -1,5 +1,5 @@
 <?php
-$host = 'localhost';
+$host = '127.0.0.1'; // 👈 use this instead of 'localhost'
 $db = 'misc';
 $user = 'fred';
 $pass = 'zap';
@@ -11,7 +11,7 @@ try {
     $pdo = new PDO($dsn, $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Check if 'users' table exists
+    // Optional: auto-load init.sql if users table is missing
     $stmt = $pdo->query("SHOW TABLES LIKE 'users'");
     if ($stmt->rowCount() == 0) {
         $sql = file_get_contents(__DIR__ . '/init.sql');
